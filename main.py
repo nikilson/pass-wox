@@ -52,8 +52,8 @@ class UnixPassMenu(Wox):
         idfile = open(keyid_file, "r")
         keyid = idfile.read()
         idfile.close()
-        output = subprocess.check_output(["gpg", "-u", keyid, "-d", "{}".format(filename)], startupinfo=si)
-        subprocess.run("clip.exe", universal_newlines=True, input=output.decode(), startupinfo=si)
+        output = subprocess.check_output(["gpg", "-u", keyid, "-d", "{}".format(filename)], startupinfo=si).decode()
+        subprocess.run("clip.exe", universal_newlines=True, input=output[:output.find("\n")], startupinfo=si)
         # os.system("echo {} | clip.exe".format(content))
 
         return None
