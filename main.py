@@ -2,10 +2,14 @@
 import os
 import re
 import subprocess 
+import threading
 from wox import Wox
+from dependencies import clear_clipboard
+from dependencies import show_text
 
 class UnixPassMenu(Wox):
-
+    window_prc = None
+    clipboard_prc = None
     # query is default function to receive realtime keystrokes from wox launcher
     def query(self, query):
         results = []
@@ -54,6 +58,12 @@ class UnixPassMenu(Wox):
         idfile.close()
         output = subprocess.check_output(["gpg", "-u", keyid, "-d", "{}".format(filename)], startupinfo=si).decode()
         subprocess.run("clip.exe", universal_newlines=True, input=output[:output.find("\n")], startupinfo=si)
+        # window_prc = multiprocessing.Process(target = show_text, args = (output[output.find("\n")+1:],))
+        subprocess.Popen(["CommandlineTextBox.exe", output[output.find("\n")+1:]])
+        # clipboard_prc = threading.Thread(target = clear_clipboard, args=(5, ))
+        # clipboard_prc.start()
+        # subprocess.Popen(clear_clipboard())
+        # os.system("CommandlineTextBox.exe {}".format(output[output.find("\n"):]))
         # os.system("echo {} | clip.exe".format(content))
 
         return None

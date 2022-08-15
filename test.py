@@ -1,7 +1,11 @@
 import os
 import re
 import subprocess
-
+from time import sleep
+from dependencies import clear_clipboard
+from dependencies import show_text
+import multiprocessing
+import threading
 usr = os.path.expanduser('~')
 pass_dir = os.path.join(usr, '.password-store')
 password_files = [passwd_file for passwd_file in os.listdir(pass_dir) if not passwd_file.startswith('.')]
@@ -20,4 +24,18 @@ idfile.close()
 output = subprocess.check_output(["gpg", "-u", keyid, "-d", "{}".format(filename)]).decode()
 print(output)
 subprocess.run("clip.exe", universal_newlines=True, input=output[:output.find("\n")])
-subprocess.run("Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Hello World')")
+thred2 = multiprocessing.Process(target = show_text, args = (output[output.find('\n')+1:],))
+thred = multiprocessing.Process(target = clear_clipboard)
+# thred.daemon = True
+if __name__ == '__main__':
+    thred.start()
+    thred2.start()
+
+# thred.join()
+print(thred.is_alive())
+if __name__ == '__main__':
+    thred.terminate()
+print(thred.is_alive())
+# sleep(5)
+# if __name__ == '__main__':
+#     thred2.terminate()
