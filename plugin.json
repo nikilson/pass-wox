@@ -1,0 +1,12 @@
+{
+    "ID":"2f4f384e-76ce-4kc3-aea2-b16f5l5c328f",
+    "ActionKeyword":"pass",
+    "Name":"UnixPassMenu",
+    "Description":"Hello World",
+    "Author":"Rinaldo",
+    "Version":"1.0.1",
+    "Language":"python",
+    "Website":"https://github.com/Wox-launcher/Wox",
+    "IcoPath":"Images\\app.png",
+    "ExecuteFileName":"main.py"
+}
