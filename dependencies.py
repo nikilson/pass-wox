@@ -1,10 +1,6 @@
-def clear_clipboard(sec = 45):
-    from time import sleep
-    from ctypes import windll
-    sleep(sec)
-    if windll.user32.OpenClipboard(None):
-        windll.user32.EmptyClipboard()
-        windll.user32.CloseClipboard()
+def clear_clipboard():
+    import subprocess
+    subprocess.call(['CleanClipboard.exe'])
 
 def show_text(text):
     import os
