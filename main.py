@@ -60,9 +60,11 @@ class UnixPassMenu(Wox):
         subprocess.run("clip.exe", universal_newlines=True, input=output[:output.find("\n")], startupinfo=si)
         # window_prc = multiprocessing.Process(target = show_text, args = (output[output.find("\n")+1:],))
         subprocess.Popen(["CommandlineTextBox.exe", output[output.find("\n")+1:]])
-        clipboard_prc = threading.Thread(target = clear_clipboard)
-        clipboard_prc.setDaemon(True)
-        clipboard_prc.start()
+        DETACHED_PROCESS = 0x00000008
+        subprocess.Popen(["CleanClipboard.exe", "arg"], close_fds=True, creationflags=DETACHED_PROCESS)
+        # clipboard_prc = threading.Thread(target = clear_clipboard)
+        # clipboard_prc.setDaemon(True)
+        # clipboard_prc.start()
         return None
 
 if __name__ == "__main__":

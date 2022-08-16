@@ -1,6 +1,6 @@
 def clear_clipboard():
     import subprocess
-    subprocess.call(['CleanClipboard.exe'])
+    subprocess.Popen(['CleanClipboard.exe'])
 
 def show_text(text):
     import os
