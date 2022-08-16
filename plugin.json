@@ -6,7 +6,7 @@
     "Author":"Rinaldo",
     "Version":"1.0.1",
     "Language":"python",
-    "Website":"https://github.com/Wox-launcher/Wox",
-    "IcoPath":"Images\\app.png",
+    "Website":"https://github.com/nikilson/pass-wox",
+    "IcoPath":"Images\\key.png",
     "ExecuteFileName":"main.py"
 }
