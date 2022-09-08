@@ -2,7 +2,7 @@
     "ID":"2f4f384e-76ce-4kc3-aea2-b16f5l5c328f",
     "ActionKeyword":"pass",
     "Name":"UnixPassMenu",
-    "Description":"Hello World",
+    "Description":"This is a unix password manager client",
     "Author":"Rinaldo",
     "Version":"1.0.1",
     "Language":"python",
